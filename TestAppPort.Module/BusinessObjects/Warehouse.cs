@@ -11,6 +11,10 @@ using System.Threading.Tasks;
 
 namespace TestAppPort.Module.BusinessObjects
 {
+    /// <summary>
+    /// Warehouse class
+    /// </summary>
+    [NavigationItem("Port")]
     public class Warehouse : BaseObject
     {
         public Warehouse(Session session) : base(session) { }
@@ -61,6 +65,17 @@ namespace TestAppPort.Module.BusinessObjects
         public XPCollection<Platform> Platforms
         {
             get { return GetCollection<Platform>(nameof(Platforms)); }
+        }
+
+        /// <summary>
+        /// Pickets that are located in the Warehouse
+        /// </summary>
+        [Association]
+        //    [RuleRequiredField("RuleRequiredField for Warehouse.Platforms",
+        //DefaultContexts.Save)]
+        public XPCollection<Picket> Pickets
+        {
+            get { return GetCollection<Picket>(nameof(Pickets)); }
         }
     }
 }

@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 namespace TestAppPort.Module.BusinessObjects
 {
     /// <summary>
-    /// Port class
+    /// Platform class
     /// </summary>
     [NavigationItem("Port")]
     public class Platform : BaseObject

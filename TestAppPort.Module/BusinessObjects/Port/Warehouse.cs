@@ -17,12 +17,23 @@ namespace TestAppPort.Module.BusinessObjects
     [NavigationItem("Port")]
     public class Warehouse : BaseObject
     {
+        #region fields
+        
+        string name;
+        Person manager;
+        string description;
+
+        #endregion fields
+
+        #region constructors
         public Warehouse(Session session) : base(session) { }
+        #endregion constructors
+
+        #region properties
 
         /// <summary>
         /// The name of Warehouse
         /// </summary>
-        string name;
         [RuleRequiredField("RuleRequiredField for Warehouse.Name",
     DefaultContexts.Save)]
         public string Name
@@ -34,7 +45,6 @@ namespace TestAppPort.Module.BusinessObjects
         /// <summary>
         /// The manager who manages the Warehouse
         /// </summary>
-        Person manager;
         [RuleRequiredField("RuleRequiredField for Warehouse.Manager",
     DefaultContexts.Save)]
         public Person Manager
@@ -46,7 +56,6 @@ namespace TestAppPort.Module.BusinessObjects
         /// <summary>
         /// Description of the Warehouse
         /// </summary>
-        string description;
         [Size(SizeAttribute.Unlimited)]
         [RuleRequiredField("RuleRequiredField for Warehouse.Description",
     DefaultContexts.Save)]
@@ -77,5 +86,7 @@ namespace TestAppPort.Module.BusinessObjects
         {
             get { return GetCollection<Picket>(nameof(Pickets)); }
         }
+        #endregion properties
+
     }
 }

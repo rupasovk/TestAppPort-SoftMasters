@@ -17,12 +17,25 @@ namespace TestAppPort.Module.BusinessObjects
     [NavigationItem("Port")]
     public class Platform : BaseObject
     {
+        #region fields
+        
+        string name;
+        float cargo;
+        Warehouse warehouse;
+
+        #endregion fields
+
+        #region constructors
+
         public Platform(Session session) : base(session) { }
+
+        #endregion constructors
+
+        #region properties
 
         /// <summary>
         /// Name of the Platform
         /// </summary>
-        string name;
         [RuleRequiredField("RuleRequiredField for Platform.Name",
     DefaultContexts.Save)]
         public string Name
@@ -34,7 +47,6 @@ namespace TestAppPort.Module.BusinessObjects
         /// <summary>
         /// The cargo that is on the Platform
         /// </summary>
-        float cargo;
         [RuleRequiredField("RuleRequiredField for Platform.Cargo",
     DefaultContexts.Save)]
         public float Cargo
@@ -46,7 +58,6 @@ namespace TestAppPort.Module.BusinessObjects
         /// <summary>
         /// The Warehouse where the Platform is located
         /// </summary>
-        Warehouse warehouse;
         [Association]
         [RuleRequiredField("RuleRequiredField for Platform.Warehouse",
     DefaultContexts.Save)]
@@ -66,5 +77,7 @@ namespace TestAppPort.Module.BusinessObjects
         {
             get { return GetCollection<Picket>(nameof(Pickets)); }
         }
+
+        #endregion properties
     }
 }
